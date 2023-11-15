@@ -1,0 +1,34 @@
+﻿<Window x:Class="CollectionBookWPF.View.AddNewBook"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CollectionBookWPF.View"
+        mc:Ignorable="d" Background="BurlyWood"
+        Title="Добавить" Height="300" Width="300"
+        Name="AddNewBookWnd">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Orientation="Vertical"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Width="200">
+            <TextBlock Text="Название книги"/>
+            <TextBox Style="{DynamicResource TextBoxStyle}" Text="{Binding Book_Name}"/>
+            <TextBlock Text="Автор"/>
+            <TextBox Style="{DynamicResource TextBoxStyle}" 
+                     Text="{Binding Author}" PreviewTextInput="Autor_PreviewTextInput"/> 
+            <TextBlock Text="Жанр"/>
+            <ComboBox ItemsSource="{Binding Com_Box}" SelectedIndex="{Binding Genre}"/>
+            <TextBlock Text="Год издания"/>
+            <TextBox Style="{DynamicResource TextBoxStyle}" MaxLength="4" 
+                     Text="{Binding Year_Of_Publishing}" PreviewTextInput="Year_PreviewTextInput"/>
+        </StackPanel>
+        <Button Style="{DynamicResource ButtonStyle}" Grid.Row="1" Content="Добавить" Command="{Binding Open_Add_New_Book}"
+                CommandParameter="{Binding ElementName=AddNewBookWnd}"/>
+    </Grid>
+</Window>
